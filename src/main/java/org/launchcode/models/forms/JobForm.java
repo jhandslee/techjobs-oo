@@ -5,7 +5,6 @@ import org.launchcode.models.Employer;
 import org.launchcode.models.Location;
 import org.launchcode.models.PositionType;
 import org.launchcode.models.data.JobData;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -22,11 +21,55 @@ public class JobForm {
     @NotNull
     private int employerId;
 
+    @NotNull
+    private int employer;
+
+    @NotNull
+    private int location;
+
+    @NotNull
+    private int positionType;
+
+    @NotNull
+    private int coreCompetency;
+
     /*
         TODO #3 - Included other fields needed to create a job,
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
+
+    public int getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(int employer) {
+        this.employer = employer;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
+    public int getPositionType() {
+        return positionType;
+    }
+
+    public void setPositionType(int positionType) {
+        this.positionType = positionType;
+    }
+
+    public int getCoreCompetency() {
+        return coreCompetency;
+    }
+
+    public void setCoreCompetency(int coreCompetency) {
+        this.coreCompetency = coreCompetency;
+    }
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
@@ -42,7 +85,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
-
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
     }
 
     public String getName() {
@@ -91,5 +136,7 @@ public class JobForm {
 
     public void setPositionTypes(ArrayList<PositionType> positionTypes) {
         this.positionTypes = positionTypes;
+
     }
+
 }
